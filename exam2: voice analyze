@@ -1,0 +1,17 @@
+%——————————————————————————————————————————————
+title：voice analyze
+author：Li Zhuohong
+time：2018/11/3
+%——————————————————————————————————————————————
+[y,Fs]=audioread('track.wav');
+y=y(:,1);
+sound(y)
+figure(1)
+subplot(2,1,1);
+plot(y);
+xlabel('时间(s)');
+Y=fft(y,length(y));
+mag=abs(Y);
+subplot(2,1,2);
+plot(abs(Y));
+xlabel('频率(Hz)');
