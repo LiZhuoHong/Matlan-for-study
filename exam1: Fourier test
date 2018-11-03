@@ -1,0 +1,30 @@
+%———————————————————————————————————————————
+title：Fourier test
+author：Li Zhuohong
+time：2018/11/3
+%——————————————————————————————————————————
+
+t=0:0.1:10;
+y0=sin(t)
+y1=sin(3*t)/3
+y2=sin(5*t)/5
+y3=sin(7*t)/7
+y4=sin(9*t)/9
+y5=sin(11*t)/11
+y6=sin(13*t)/13
+y7=sin(15*t)/15
+y8=sin(17*t)/17
+y9=sin(19*t)/19
+total0=y0
+total1=y0+y1
+total2=y0+y1+y2+y3+y4
+total3=y0+y1+y2+y3+y4+y5+y6+y7+y8+y9
+figure(1)
+subplot(2,2,1);plot(t,total0);xlabel('时间（t/s）');ylabel('幅值')
+subplot(2,2,2);plot(t,total1);xlabel('时间（t/s）');ylabel('幅值')
+subplot(2,2,3);plot(t,total2);xlabel('时间（t/s）');ylabel('幅值')
+subplot(2,2,4);plot(t,total3);xlabel('时间（t/s）');ylabel('幅值')
+Y=fft(total3,4096);
+figure(3)
+Y1=fftshift(Y)
+plot(abs(Y1))
