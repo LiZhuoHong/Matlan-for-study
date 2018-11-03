@@ -1,0 +1,45 @@
+ %————————————————————————————————————
+ title:NOAA image processing
+ author:Li Zhuohong
+ time:2018/11/3
+ %—————————————————————————————————————
+ 
+ img2=imread('f:\matlab\bin\NOAA.jpg');
+ imager = img2(:,:,1);
+R=filter2(fspecial('average',10),imager)/255;
+red= medfilt2(imager, [6,6]);
+imageg = img2(:,:,2);
+G=filter2(fspecial('average',10),imageg)/255;
+gray= medfilt2(imageg, [6,6]);
+imageb = img2(:,:,3);
+B=filter2(fspecial('average',10),imageb)/255;
+blue= medfilt2(imageb, [6,6]);
+image(:,:,1)=red;
+image(:,:,2)=gray;
+image(:,:,3)=blue;
+imag(:,:,1)=R;
+imag(:,:,2)=G;
+imag(:,:,3)=B;
+figure(7)
+subplot(221);
+imshow(red);
+title('r')
+subplot(222);
+imshow(gray);
+title('g')
+subplot(223);
+imshow(blue);
+title('b')
+subplot(224);
+imshow(image);
+figure(2)
+subplot(131)
+imshow(img2)
+title('NOAA卫星原图')
+subplot(132)
+imshow(imag)
+title('分别对RGB三通道进行平滑滤波')
+subplot(133)
+imshow(image)
+title('分别对RGB三通道进行中值滤波')
+ %——————————————————————-
